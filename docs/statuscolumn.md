@@ -32,6 +32,7 @@
   folds = {
     open = false, -- show open fold icons
     git_hl = false, -- use Git Signs hl for fold icons
+    click_to_col = 1, -- column to put cursor when clicking in statuscolumn
   },
   git = {
     -- patterns to match Git signs

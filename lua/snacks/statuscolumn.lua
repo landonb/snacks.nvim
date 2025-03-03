@@ -26,6 +26,7 @@ local defaults = {
   folds = {
     open = false, -- show open fold icons
     git_hl = false, -- use Git Signs hl for fold icons
+    click_to_col = 1, -- column to put cursor when clicking in statuscolumn
   },
   git = {
     -- patterns to match Git signs
@@ -270,7 +271,7 @@ end
 
 function M.click_fold()
   local pos = vim.fn.getmousepos()
-  vim.api.nvim_win_set_cursor(pos.winid, { pos.line, 1 })
+  vim.api.nvim_win_set_cursor(pos.winid, { pos.line, config.folds.click_to_col })
   vim.api.nvim_win_call(pos.winid, function()
     if vim.fn.foldlevel(pos.line) > 0 then
       vim.cmd("normal! za")
