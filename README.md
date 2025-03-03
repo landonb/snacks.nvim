@@ -2,6 +2,21 @@
 
 A collection of small QoL plugins for Neovim.
 
+## This fork
+
+This forks adds a config option to choose the cursor column
+when user clicks in the `statuscolumn`.
+
+- By default, the cursor is placed in the second column when
+  user clicks in the `statuscolumn`. Set to 0, for example,
+  to send the cursor to the first column instead:
+
+```lua
+{
+  statuscolumn = { folds = { click_to_col = 0 } },
+}
+```
+
 ## ✨ Features
 
 <!-- toc:start -->
