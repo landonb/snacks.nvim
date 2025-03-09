@@ -270,6 +270,10 @@ function M.health()
 end
 
 function M.click_fold()
+  -- Don't fold if user clicking to extended a selection.
+  if vim.fn.mode():find("^[sSvV]") then
+    return
+  end
   local pos = vim.fn.getmousepos()
   vim.api.nvim_win_set_cursor(pos.winid, { pos.line, config.folds.click_to_col })
   vim.api.nvim_win_call(pos.winid, function()
