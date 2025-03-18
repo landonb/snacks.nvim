@@ -276,6 +276,13 @@ function M.click_fold()
   end
   local pos = vim.fn.getmousepos()
   vim.api.nvim_win_set_cursor(pos.winid, { pos.line, config.folds.click_to_col })
+  -- ISOFF: I'd rather clicking just move the cursor, because sometimes
+  -- when I try to click the leftmost column to move the cursor, it folds
+  -- instead (when I click the signcolumn by mistake).
+  -- - Also, I rarely fold, and when I do, I use the z* commands.
+  if true then
+    return
+  end
   vim.api.nvim_win_call(pos.winid, function()
     if vim.fn.foldlevel(pos.line) > 0 then
       vim.cmd("normal! za")
