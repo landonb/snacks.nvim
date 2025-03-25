@@ -64,7 +64,7 @@ function M.proc(opts, ctx)
       if not aborted and code ~= 0 and opts.notify ~= false then
         local full = { opts.cmd or "" }
         vim.list_extend(full, opts.args or {})
-        Snacks.notify.error(("Command failed:\n- cmd: `%s`"):format(table.concat(full, " ")))
+        Snacks.notify.error(("Command failed (%d):\n- cmd: `%s`"):format(code, table.concat(full, " ")))
       end
       handle:close()
       self:resume()
