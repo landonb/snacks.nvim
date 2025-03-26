@@ -276,6 +276,8 @@ function M.click_fold()
   end
   local pos = vim.fn.getmousepos()
   vim.api.nvim_win_set_cursor(pos.winid, { pos.line, config.folds.click_to_col })
+  -- If user clicks signcolumn of inactive window, activate that window.
+  vim.api.nvim_set_current_win(pos.winid)
   -- ISOFF: I'd rather clicking just move the cursor, because sometimes
   -- when I try to click the leftmost column to move the cursor, it folds
   -- instead (when I click the signcolumn by mistake).
